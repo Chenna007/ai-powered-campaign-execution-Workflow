@@ -70,7 +70,14 @@
         <div class="hero-media-wrap">
           <div class="hero-globe-shell" aria-label="Interactive rotating globe">
             <canvas id="heroGlobeCanvas" class="hero-globe-canvas"></canvas>
-            <div class="hero-globe-ring" aria-hidden="true"></div>
+            <span class="hero-globe-tag hero-globe-tag--sf">SAN FRANCISCO</span>
+            <span class="hero-globe-tag hero-globe-tag--ny">NEW YORK</span>
+            <span class="hero-globe-tag hero-globe-tag--par">PARIS</span>
+            <span class="hero-globe-tag hero-globe-tag--dub">DUBAI</span>
+            <span class="hero-globe-tag hero-globe-tag--sao">SAO PAULO</span>
+            <span class="hero-globe-tag hero-globe-tag--cap">CAPE TOWN</span>
+            <span class="hero-globe-tag hero-globe-tag--route-a hero-globe-tag--light">SF -> TOKYO</span>
+            <span class="hero-globe-tag hero-globe-tag--route-b hero-globe-tag--light">NYC -> LONDON</span>
           </div>
         </div>
       </div>
@@ -1162,6 +1169,14 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
     { location: [40.7128, -74.006], size: 0.06 },
     { location: [51.5074, -0.1278], size: 0.06 },
     { location: [35.6762, 139.6503], size: 0.07 },
+    { location: [37.7595, -122.4367], size: 0.06 },
+    { location: [-33.9249, 18.4241], size: 0.055 },
+    { location: [-23.5505, -46.6333], size: 0.055 },
+  ];
+
+  const arcs = [
+    { from: [37.7595, -122.4367], to: [35.6762, 139.6503] },
+    { from: [40.7128, -74.006], to: [51.5074, -0.1278] },
   ];
 
   function buildGlobe() {
@@ -1178,15 +1193,19 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
       phi: 0,
       theta: 0.2,
       dark: 0,
-      diffuse: 1.35,
-      mapSamples: 14000,
-      mapBrightness: 8,
-      baseColor: [0.97, 0.98, 1],
-      markerColor: [0.13, 0.33, 0.86],
-      glowColor: [0.94, 0.96, 1],
+      diffuse: 2.2,
+      mapSamples: 20000,
+      mapBrightness: 4,
+      baseColor: [1, 1, 1],
+      markerColor: [0.31, 0.47, 0.9],
+      glowColor: [0.98, 0.98, 0.98],
       markerSize: 0.055,
       markerElevation: 0.018,
       markers,
+      arcColor: [0.31, 0.47, 0.9],
+      arcWidth: 1,
+      arcHeight: 0.2,
+      arcs,
       opacity: 1,
       onRender: (state) => {
         phi += 0.0035;

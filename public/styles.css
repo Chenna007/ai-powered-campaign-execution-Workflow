@@ -358,45 +358,23 @@ body.cursor-on .cursor-ring {
 
 .hero-media-wrap {
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 14px;
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.94), rgba(241, 247, 255, 0.92));
-  border: 1px solid rgba(13, 32, 74, 0.1);
-  box-shadow: 0 22px 60px rgba(15, 44, 116, 0.12);
-  max-width: 540px;
+  overflow: visible;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  max-width: 640px;
   margin-left: auto;
-  animation: heroMediaFloat 7.2s ease-in-out infinite;
-  will-change: transform, box-shadow;
-}
-
-.hero-media {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  border-radius: 12px;
-  transform: scale(1.01);
-  animation: heroMediaZoom 7.2s ease-in-out infinite;
-  will-change: transform;
 }
 
 .hero-media-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  background: linear-gradient(130deg, rgba(255, 255, 255, 0) 28%, rgba(255, 255, 255, 0.34) 50%, rgba(255, 255, 255, 0) 72%);
-  transform: translateX(-120%);
-  animation: heroMediaShine 5.6s ease-in-out infinite;
+  content: none;
 }
 
 .hero-globe-shell {
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 610px;
   margin: 0 auto;
   aspect-ratio: 1 / 1;
   display: grid;
@@ -409,51 +387,49 @@ body.cursor-on .cursor-ring {
   border-radius: 50%;
   display: block;
   cursor: grab;
-  background:
-    radial-gradient(circle at 50% 32%, rgba(255, 255, 255, 0.94), rgba(242, 248, 255, 0.86) 58%, rgba(230, 239, 255, 0.8));
-  box-shadow:
-    inset 0 0 0 1px rgba(32, 83, 219, 0.1),
-    0 24px 55px rgba(16, 40, 92, 0.16);
+  background: transparent;
+  box-shadow: none;
 }
 
-.hero-globe-ring {
+.hero-globe-tag {
   position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  border: 1px dashed rgba(32, 83, 219, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 9px;
+  border-radius: 2px;
+  background: #10173a;
+  color: #ffffff;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
   pointer-events: none;
+  z-index: 2;
 }
 
-@keyframes heroMediaFloat {
-  0%, 100% {
-    transform: translateY(0);
-    box-shadow: 0 22px 60px rgba(15, 44, 116, 0.12);
-  }
-  50% {
-    transform: translateY(-8px);
-    box-shadow: 0 28px 68px rgba(15, 44, 116, 0.16);
-  }
+.hero-globe-tag--light {
+  background: #eef1f8;
+  color: #242a45;
+  font-weight: 600;
 }
 
-@keyframes heroMediaZoom {
-  0%, 100% { transform: scale(1.01); }
-  50% { transform: scale(1.035); }
-}
+.hero-globe-tag--sf { left: 4%; top: 28%; }
+.hero-globe-tag--ny { left: 27%; top: 30%; }
+.hero-globe-tag--par { right: 19%; top: 25%; }
+.hero-globe-tag--dub { right: 2%; top: 34%; }
+.hero-globe-tag--sao { left: 40%; bottom: 22%; }
+.hero-globe-tag--cap { right: 9%; bottom: 19%; }
+.hero-globe-tag--route-a { left: 16%; top: 14%; }
+.hero-globe-tag--route-b { left: 42%; top: 18%; }
 
-@keyframes heroMediaShine {
-  0%, 70%, 100% { transform: translateX(-120%); }
-  85% { transform: translateX(120%); }
+.hero-visual {
+  display: flex;
+  justify-content: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-media-wrap,
-  .hero-media,
-  .hero-media-wrap::after {
-    animation: none !important;
-    transform: none !important;
-  }
-
-  .hero-globe-ring {
+  .hero-globe-canvas {
     animation: none !important;
   }
 }
@@ -2176,6 +2152,16 @@ body.cursor-on .cursor-ring {
   .showcase-item p { font-size: 15px; }
   .showcase-copy { gap: 18px; padding: 0; }
   .hero-dash-metrics { grid-template-columns: 1fr; }
+  .hero-globe-shell { max-width: 460px; }
+  .hero-globe-tag { font-size: 9px; padding: 3px 7px; }
+  .hero-globe-tag--sf { left: 5%; top: 30%; }
+  .hero-globe-tag--ny { left: 27%; top: 31%; }
+  .hero-globe-tag--par { right: 20%; top: 25%; }
+  .hero-globe-tag--dub { right: 3%; top: 34%; }
+  .hero-globe-tag--sao { left: 40%; bottom: 23%; }
+  .hero-globe-tag--cap { right: 10%; bottom: 20%; }
+  .hero-globe-tag--route-a,
+  .hero-globe-tag--route-b { display: none; }
   .form-grid { grid-template-columns: 1fr; }
   .proposal-grid { grid-template-columns: 1fr; }
   .budget-grid { grid-template-columns: repeat(2, 1fr); }
