@@ -68,11 +68,10 @@
 
       <div class="hero-visual" data-load-in>
         <div class="hero-media-wrap">
-          <img
-            class="hero-media"
-            src="/hero-image.png"
-            alt="Campaign workflow visual"
-          />
+          <div class="hero-globe-shell" aria-label="Interactive rotating globe">
+            <canvas id="heroGlobeCanvas" class="hero-globe-canvas"></canvas>
+            <div class="hero-globe-ring" aria-hidden="true"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1140,6 +1139,107 @@
     });
   }
 
+})();
+</script>
+
+<script type="module">
+import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
+
+(function initHeroGlobe() {
+  const canvas = document.getElementById("heroGlobeCanvas");
+  if (!canvas) return;
+
+  let globe = null;
+  let phi = 0;
+  let width = 0;
+  let drag = null;
+  let dragOffset = { phi: 0, theta: 0 };
+  let momentum = { phi: 0, theta: 0 };
+  let thetaOffset = 0;
+
+  const markers = [
+    { location: [25.2048, 55.2708], size: 0.085 },
+    { location: [40.7128, -74.006], size: 0.06 },
+    { location: [51.5074, -0.1278], size: 0.06 },
+    { location: [35.6762, 139.6503], size: 0.07 },
+  ];
+
+  function buildGlobe() {
+    const nextWidth = canvas.offsetWidth;
+    if (!nextWidth || nextWidth === width) return;
+    width = nextWidth;
+
+    if (globe) globe.destroy();
+
+    globe = createGlobe(canvas, {
+      devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+      width,
+      height: width,
+      phi: 0,
+      theta: 0.2,
+      dark: 0,
+      diffuse: 1.35,
+      mapSamples: 14000,
+      mapBrightness: 8,
+      baseColor: [0.97, 0.98, 1],
+      markerColor: [0.13, 0.33, 0.86],
+      glowColor: [0.94, 0.96, 1],
+      markerSize: 0.055,
+      markerElevation: 0.018,
+      markers,
+      opacity: 1,
+      onRender: (state) => {
+        phi += 0.0035;
+
+        if (Math.abs(momentum.phi) > 0.0001 || Math.abs(momentum.theta) > 0.0001) {
+          dragOffset.phi += momentum.phi;
+          thetaOffset += momentum.theta;
+          momentum.phi *= 0.95;
+          momentum.theta *= 0.95;
+        }
+
+        const thetaMin = -0.35;
+        const thetaMax = 0.35;
+        thetaOffset = Math.max(thetaMin, Math.min(thetaMax, thetaOffset));
+
+        state.phi = phi + dragOffset.phi;
+        state.theta = 0.2 + thetaOffset + dragOffset.theta;
+      },
+    });
+  }
+
+  const onPointerDown = (event) => {
+    drag = { x: event.clientX, y: event.clientY, t: Date.now() };
+    canvas.style.cursor = "grabbing";
+  };
+
+  const onPointerMove = (event) => {
+    if (!drag) return;
+    const deltaX = event.clientX - drag.x;
+    const deltaY = event.clientY - drag.y;
+    dragOffset = { phi: deltaX / 280, theta: deltaY / 1100 };
+
+    const now = Date.now();
+    const dt = Math.max(now - drag.t, 1);
+    momentum.phi = ((event.clientX - drag.x) / dt) * 0.22;
+    momentum.theta = ((event.clientY - drag.y) / dt) * 0.07;
+  };
+
+  const onPointerUp = () => {
+    if (drag) {
+      thetaOffset += dragOffset.theta;
+      dragOffset = { phi: dragOffset.phi, theta: 0 };
+    }
+    drag = null;
+    canvas.style.cursor = "grab";
+  };
+
+  canvas.addEventListener("pointerdown", onPointerDown);
+  window.addEventListener("pointermove", onPointerMove, { passive: true });
+  window.addEventListener("pointerup", onPointerUp, { passive: true });
+  window.addEventListener("resize", buildGlobe);
+
+  buildGlobe();
 })();
 </script>
 
