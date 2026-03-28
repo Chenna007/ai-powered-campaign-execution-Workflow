@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowAI Agency OS — AI-Powered Campaign Execution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     Navigation
+     ══════════════════════════════════════════════════════════════════════ -->
+<nav class="nav nav--hero">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">F</div>
+      <div class="nav-logo-text nav-logo-text--dark">FlowAI <span>Agency</span></div>
+    </a>
+    <button type="button" class="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
+      <svg class="nav-menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
+      </svg>
+    </button>
+    <div class="nav-links">
+      <a href="#input-section" class="nav-link nav-link--dark">Run Demo</a>
+      <a href="#roi-section" class="nav-link nav-link--dark">ROI</a>
+      <a href="#sop-section" class="nav-link nav-link--dark">Solutions</a>
+      <a href="#how-it-works" class="nav-link nav-link--dark">How It Works</a>
+      <a href="mailto:keshavachenna052@gmail.com" class="nav-cta">Contact Me</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     Hero — Greenhouse-inspired
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-shell">
+    <div class="hero-inner">
+      <div class="hero-copy" data-load-in>
+        <p class="hero-eyebrow">AI Automation Strategy Demo</p>
+        <h1 class="hero-heading">
+          Turn campaign chaos into a
+          <span>clear operating system</span>
+        </h1>
+        <p class="hero-subtext">
+          This demo shows how campaigns move from brief to board-ready output using structured automation, streamlined workflows, and executive-ready communication.
+        </p>
+
+        <a href="#input-section" class="hero-join-btn">
+          Run the live demo
+          <svg class="hero-join-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0" />
+          </svg>
+        </a>
+
+        <p class="hero-login-text">Open to AI Automation roles • <a href="#contact-section">Reach out</a></p>
+      </div>
+
+      <div class="hero-visual" data-load-in>
+        <div class="hero-media-wrap">
+          <img
+            class="hero-media"
+            src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/1/hero-img.png"
+            alt="Campaign workflow visual"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transition gradient to dark -->
+  <div class="hero-fade-to-dark"></div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     Client Input Panel
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="section" id="input-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">⚙ System Input</div>
+      <h2 class="section-title">Configure Campaign</h2>
+      <p class="section-subtitle">Enter campaign parameters. The AI engine handles everything else.</p>
+    </div>
+
+    <div class="split-showcase input-showcase">
+      <div class="showcase-copy">
+        <div class="showcase-item">
+          <div class="showcase-icon green">⏱</div>
+          <div>
+            <h3>Instant Brief Capture</h3>
+            <p>Collect brand, objective, and audience context in one compact flow built for speed.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <div class="showcase-icon blue">🤖</div>
+          <div>
+            <h3>AI-Ready Input Model</h3>
+            <p>Every field maps directly into proposal logic, creator matching, and forecasting.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <div class="showcase-icon red">📈</div>
+          <div>
+            <h3>CEO-Friendly Output</h3>
+            <p>Transforms one form submission into a complete campaign package for leadership review.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-panel">
+        <div class="input-panel-header">
+          <div class="input-panel-icon">🧾</div>
+          <div>
+            <div class="input-panel-title">Campaign Brief</div>
+            <div class="input-panel-subtitle">All fields drive AI decision logic</div>
+          </div>
+        </div>
+
+        <form id="campaignForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Brand Name</label>
+              <input type="text" class="form-input" id="brandName" placeholder="e.g. NovaSkin Beauty" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Campaign Goal</label>
+              <select class="form-select" id="campaignGoal" required>
+                <option value="" disabled selected>Select objective</option>
+                <option value="awareness">Brand Awareness</option>
+                <option value="sales">Sales & Conversions</option>
+                <option value="engagement">Community Engagement</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Budget (AED)</label>
+              <input type="number" class="form-input" id="budget" placeholder="e.g. 25000" min="5000" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Target Audience</label>
+              <input type="text" class="form-input" id="audience" placeholder="e.g. Women 25-35, UAE" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" id="runBtn">
+            <span class="btn-icon">⚡</span>
+            Run AI System
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     Loading Overlay
+     ══════════════════════════════════════════════════════════════════════ -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Running AI System...</div>
+  <div class="loading-steps">
+    <div class="loading-step" data-step="1">
+      <div class="loading-step-icon">1</div>
+      <span>Analyzing campaign brief...</span>
+    </div>
+    <div class="loading-step" data-step="2">
+      <div class="loading-step-icon">2</div>
+      <span>Generating strategic proposal...</span>
+    </div>
+    <div class="loading-step" data-step="3">
+      <div class="loading-step-icon">3</div>
+      <span>Matching optimal creators...</span>
+    </div>
+    <div class="loading-step" data-step="4">
+      <div class="loading-step-icon">4</div>
+      <span>Drafting outreach messages...</span>
+    </div>
+    <div class="loading-step" data-step="5">
+      <div class="loading-step-icon">5</div>
+      <span>Building campaign timeline...</span>
+    </div>
+    <div class="loading-step" data-step="6">
+      <div class="loading-step-icon">6</div>
+      <span>Projecting performance metrics...</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     Dashboard (Hidden until submission)
+     ══════════════════════════════════════════════════════════════════════ -->
+<div id="dashboard">
+  <div class="dashboard-header">
+    <div class="container">
+      <div class="section-label">✓ System Output</div>
+      <h2>Campaign Ready — <span class="dashboard-brand" id="dashBrand"></span></h2>
+      <div class="dashboard-meta">
+        <div class="dashboard-meta-item">
+          <span class="dashboard-meta-dot"></span>
+          Generated in <strong id="dashTime" style="margin-left:4px;color:var(--accent-green)"></strong>
+        </div>
+        <div class="dashboard-meta-item" id="dashGoal"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ── Proposal ──────────────────────────────────────────────────────── -->
+    <div class="dash-section" data-section="proposal">
+      <div class="dash-section-header">
+        <div class="dash-section-icon purple">📋</div>
+        <div>
+          <div class="dash-section-title">Strategic Proposal</div>
+          <div class="dash-section-subtitle">AI-generated campaign strategy</div>
+        </div>
+      </div>
+      <div class="proposal-card" id="proposalCard"></div>
+    </div>
+
+    <!-- ── Creators ──────────────────────────────────────────────────────── -->
+    <div class="dash-section" data-section="creators">
+      <div class="dash-section-header">
+        <div class="dash-section-icon green">👥</div>
+        <div>
+          <div class="dash-section-title">Selected Creators</div>
+          <div class="dash-section-subtitle">Matched by niche, engagement & audience fit</div>
+        </div>
+      </div>
+      <div class="creators-grid" id="creatorsGrid"></div>
+    </div>
+
+    <!-- ── Outreach ──────────────────────────────────────────────────────── -->
+    <div class="dash-section" data-section="outreach">
+      <div class="dash-section-header">
+        <div class="dash-section-icon amber">📨</div>
+        <div>
+          <div class="dash-section-title">Outreach Messages</div>
+          <div class="dash-section-subtitle">Ready-to-send personalized communications</div>
+        </div>
+      </div>
+      <div id="outreachContainer"></div>
+    </div>
+
+    <!-- ── Campaign Plan ─────────────────────────────────────────────────── -->
+    <div class="dash-section" data-section="campaign">
+      <div class="dash-section-header">
+        <div class="dash-section-icon purple">📅</div>
+        <div>
+          <div class="dash-section-title">Campaign Execution Plan</div>
+          <div class="dash-section-subtitle">7-day activation timeline</div>
+        </div>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+
+    <!-- ── Report ────────────────────────────────────────────────────────── -->
+    <div class="dash-section" data-section="report">
+      <div class="dash-section-header">
+        <div class="dash-section-icon rose">📊</div>
+        <div>
+          <div class="dash-section-title">Performance Projections</div>
+          <div class="dash-section-subtitle">AI-predicted campaign outcomes</div>
+        </div>
+      </div>
+      <div class="report-grid" id="reportGrid"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     ROI Panel
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="roi-section section" id="roi-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">💰 Return on AI</div>
+      <h2 class="section-title">The Cost of Manual Work</h2>
+      <p class="section-subtitle">Real comparison based on average agency operations</p>
+    </div>
+
+    <div class="split-showcase roi-showcase">
+      <div class="showcase-copy">
+        <div class="showcase-item">
+          <div class="showcase-icon green">⚡</div>
+          <div>
+            <h3>From 11 Hours to 60 Seconds</h3>
+            <p>Automates proposal, creator matching, outreach, and reporting into one systemized workflow.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <div class="showcase-icon blue">📊</div>
+          <div>
+            <h3>Clear Performance Economics</h3>
+            <p>Track each campaign with projected reach, conversions, and cost efficiency metrics.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <div class="showcase-icon red">🚀</div>
+          <div>
+            <h3>Scale Without Hiring Fast</h3>
+            <p>Operate at startup speed while keeping quality high across parallel campaign execution.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="roi-panel">
+        <div class="roi-grid">
+        <!-- Manual Column -->
+        <div class="roi-column">
+          <div class="roi-column-label manual">⏱ Manual Workflow</div>
+          <div class="roi-items">
+            <div class="roi-item">
+              <span class="roi-item-label">Proposal writing</span>
+              <span class="roi-item-value manual">3 hours</span>
+            </div>
+            <div class="roi-item">
+              <span class="roi-item-label">Creator research</span>
+              <span class="roi-item-value manual">4 hours</span>
+            </div>
+            <div class="roi-item">
+              <span class="roi-item-label">Outreach drafting</span>
+              <span class="roi-item-value manual">2 hours</span>
+            </div>
+            <div class="roi-item">
+              <span class="roi-item-label">Report building</span>
+              <span class="roi-item-value manual">2 hours</span>
+            </div>
+          </div>
+          <div class="roi-total manual">
+            <span>Total</span>
+            <span style="color: var(--accent-rose)">11 hours</span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="roi-divider">
+          <div class="roi-vs">VS</div>
+          <div class="roi-savings">
+            <div class="roi-savings-badge">95% Time Saved</div>
+            <div class="roi-savings-sub">3 → 15 campaigns<br>per week</div>
+          </div>
+        </div>
+
+        <!-- AI Column -->
+        <div class="roi-column">
+          <div class="roi-column-label ai">⚡ FlowAI System</div>
+          <div class="roi-items">
+            <div class="roi-item">
+              <span class="roi-item-label">Proposal generation</span>
+              <span class="roi-item-value ai">&lt; 10 sec</span>
+            </div>
+            <div class="roi-item">
+              <span class="roi-item-label">Creator matching</span>
+              <span class="roi-item-value ai">&lt; 8 sec</span>
+            </div>
+            <div class="roi-item">
+              <span class="roi-item-label">Outreach generation</span>
+              <span class="roi-item-value ai">&lt; 12 sec</span>
+            </div>
+            <div class="roi-item">
+              <span class="roi-item-label">Report generation</span>
+              <span class="roi-item-value ai">&lt; 5 sec</span>
+            </div>
+          </div>
+          <div class="roi-total ai">
+            <span>Total</span>
+            <span style="color: var(--accent-green)">&lt; 60 seconds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SOP Workflow
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="sop-section section" id="sop-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">🧠 AI-Powered Workflow System</div>
+      <h2 class="section-title">Automated SOP Pipeline</h2>
+      <p class="section-subtitle">Every step orchestrated by intelligent automation</p>
+    </div>
+
+    <div class="sop-scroll-area" id="sopScrollArea">
+      <div class="sop-sticky-content">
+        <div class="workflow-pipeline" id="workflowPipeline">
+          <div class="workflow-step" data-delay="0" data-step-key="input" aria-label="Client input step" role="button" tabindex="0">
+            <div class="workflow-step-icon">📥</div>
+            <div class="workflow-step-label">Client Input</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step" data-delay="100" data-step-key="proposal" aria-label="AI proposal step" role="button" tabindex="0">
+            <div class="workflow-step-icon">🤖</div>
+            <div class="workflow-step-label">AI Proposal</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step" data-delay="200" data-step-key="match" aria-label="Creator match step" role="button" tabindex="0">
+            <div class="workflow-step-icon">🎯</div>
+            <div class="workflow-step-label">Creator Match</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step" data-delay="300" data-step-key="outreach" aria-label="Outreach step" role="button" tabindex="0">
+            <div class="workflow-step-icon">📨</div>
+            <div class="workflow-step-label">Outreach</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step" data-delay="400" data-step-key="execute" aria-label="Execution step" role="button" tabindex="0">
+            <div class="workflow-step-icon">🚀</div>
+            <div class="workflow-step-label">Execution</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-step" data-delay="500" data-step-key="report" aria-label="Report step" role="button" tabindex="0">
+            <div class="workflow-step-icon">📊</div>
+            <div class="workflow-step-label">Report</div>
+          </div>
+        </div>
+
+        <div class="workflow-progress-track">
+          <div class="workflow-progress-bar" id="workflowProgressBar"></div>
+        </div>
+
+        <p class="workflow-progress-text" id="workflowProgressText">Step 1 of 6 - Client Input</p>
+
+        <div class="workflow-detail-card" id="workflowDetailCard">
+          <div class="workflow-detail-kicker">Current Automation</div>
+          <h3 class="workflow-detail-title">Client Input</h3>
+          <p class="workflow-detail-copy">Capture brand context, objective, and budget constraints. This data seeds every downstream decision and eliminates back-and-forth briefing loops.</p>
+          <ul class="workflow-detail-list">
+            <li>Validates required campaign fields</li>
+            <li>Normalizes input for AI processing</li>
+            <li>Creates a reusable campaign context object</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     How It Works
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">⚙ How It Works</div>
+      <h2 class="section-title">What Runs In The Background</h2>
+      <p class="section-subtitle">A practical system map showing how each stage drives better campaign output quality.</p>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <h3 class="how-card-title">1. Input To Strategy</h3>
+        <p class="how-card-copy">The engine validates business context first, then creates a strategy with channels, tactics, KPIs, and budget intent alignment.</p>
+        <ul class="how-list">
+          <li>Business objective parsing</li>
+          <li>Audience-to-channel mapping</li>
+          <li>KPI framework generation</li>
+        </ul>
+      </div>
+      <div class="how-card">
+        <h3 class="how-card-title">2. Strategy To Execution Assets</h3>
+        <p class="how-card-copy">Once strategy is approved, the platform compiles creator shortlist, outreach drafts, and timeline blocks for launch readiness.</p>
+        <ul class="how-list">
+          <li>Creator ranking and fit score</li>
+          <li>Personalized DM + email drafts</li>
+          <li>Operational timeline construction</li>
+        </ul>
+      </div>
+      <div class="how-card">
+        <h3 class="how-card-title">3. Execution To Reporting</h3>
+        <p class="how-card-copy">During and after execution, the workflow converts campaign activity into projected performance and ROI-ready reporting for leadership.</p>
+        <ul class="how-list">
+          <li>Performance signal aggregation</li>
+          <li>Conversion and cost projection</li>
+          <li>CEO-ready report formatting</li>
+        </ul>
+      </div>
+      <div class="how-card how-card--outcome">
+        <h3 class="how-card-title">Best Output Checklist</h3>
+        <p class="how-card-copy">To get the strongest campaign output, follow this sequence every time:</p>
+        <ol class="how-steps">
+          <li>Define one primary campaign goal</li>
+          <li>Specify audience clearly with location and age</li>
+          <li>Set realistic budget and timeline constraints</li>
+          <li>Review AI strategy before outreach starts</li>
+          <li>Track KPI deltas daily and iterate quickly</li>
+        </ol>
+      </div>
+      <div class="how-card how-card--full">
+        <h3 class="how-card-title">Background Automation Loop</h3>
+        <div class="how-flow">
+          <span>Input</span>
+          <span>Normalize</span>
+          <span>Generate</span>
+          <span>Rank</span>
+          <span>Draft</span>
+          <span>Forecast</span>
+          <span>Report</span>
+        </div>
+        <p class="how-card-copy">Each stage feeds the next with structured data, reducing decision lag and improving output quality over each campaign cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     Open To Work
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="contact-section" id="contact-section">
+  <div class="container">
+    <div class="contact-card open-work-card">
+      <div class="section-label">✅ Open To Work</div>
+      <h2 class="contact-title">I am open to work, please reach out</h2>
+      <p class="contact-subtitle">Available for AI & Automation Lead, Workflow Automation, and Applied AI Operations roles.</p>
+
+      <div class="open-work-grid">
+        <a class="open-work-item" href="tel:+971521046611">
+          <span class="open-work-logo">📱</span>
+          <div>
+            <div class="open-work-label">Phone</div>
+            <div class="open-work-value">+971 52 104 6611</div>
+          </div>
+        </a>
+        <a class="open-work-item" href="mailto:keshavachenna052@gmail.com">
+          <span class="open-work-logo">✉️</span>
+          <div>
+            <div class="open-work-label">Email</div>
+            <div class="open-work-value">keshavachenna052@gmail.com</div>
+          </div>
+        </a>
+        <a class="open-work-item" href="https://www.linkedin.com/in/chenna-keshava-10may2002/" target="_blank" rel="noopener noreferrer">
+          <span class="open-work-logo">in</span>
+          <div>
+            <div class="open-work-label">LinkedIn</div>
+            <div class="open-work-value">linkedin.com/in/chenna-keshava-10may2002</div>
+          </div>
+        </a>
+        <a class="open-work-item" href="https://chenna-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <span class="open-work-logo">🌐</span>
+          <div>
+            <div class="open-work-label">Portfolio</div>
+            <div class="open-work-value">chenna-portfolio.vercel.app</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     Application Logic
+     ══════════════════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── Hero Load-in Animations ──────────────────────────────────────────────
+  setTimeout(() => {
+    document.querySelectorAll('[data-load-in]').forEach((el, i) => {
+      setTimeout(() => el.setAttribute('data-loaded', ''), i * 150);
+    });
+  }, 100);
+
+  // ── Nav Scroll: Light → Dark transition ─────────────────────────────────
+  const nav = document.querySelector('.nav');
+  const heroEl = document.getElementById('hero');
+
+  function updateNav() {
+    if (!heroEl) return;
+    const heroBottom = heroEl.getBoundingClientRect().bottom;
+    if (heroBottom <= 60) {
+      nav.classList.add('nav--scrolled');
+    } else {
+      nav.classList.remove('nav--scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // ── DOM References ──────────────────────────────────────────────────────
+  const form         = document.getElementById('campaignForm');
+  const runBtn       = document.getElementById('runBtn');
+  const overlay      = document.getElementById('loadingOverlay');
+  const dashboard    = document.getElementById('dashboard');
+  const cursorDot    = document.getElementById('cursorDot');
+  const cursorRing   = document.getElementById('cursorRing');
+
+  // ── Custom Cursor (desktop only) ───────────────────────────────────────
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && cursorDot && cursorRing) {
+    document.body.classList.add('cursor-on');
+    let dotX = 0;
+    let dotY = 0;
+    let ringX = 0;
+    let ringY = 0;
+
+    window.addEventListener('mousemove', (event) => {
+      dotX = event.clientX;
+      dotY = event.clientY;
+      cursorDot.style.transform = `translate(${dotX - 4}px, ${dotY - 4}px)`;
+    }, { passive: true });
+
+    const animateRing = () => {
+      ringX += (dotX - ringX) * 0.15;
+      ringY += (dotY - ringY) * 0.15;
+      cursorRing.style.transform = `translate(${ringX - 15}px, ${ringY - 15}px)`;
+      requestAnimationFrame(animateRing);
+    };
+    requestAnimationFrame(animateRing);
+
+    document.querySelectorAll('a, button, .workflow-step').forEach((node) => {
+      node.addEventListener('mouseenter', () => {
+        cursorRing.classList.add('active');
+      });
+      node.addEventListener('mouseleave', () => {
+        cursorRing.classList.remove('active');
+      });
+    });
+  }
+
+  // ── Loading Animation ───────────────────────────────────────────────────
+  function showLoading() {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    const steps = overlay.querySelectorAll('.loading-step');
+    steps.forEach(s => { s.classList.remove('active', 'done'); });
+
+    let current = 0;
+    const interval = setInterval(() => {
+      if (current > 0) steps[current - 1].classList.remove('active');
+      if (current > 0) steps[current - 1].classList.add('done');
+      if (current < steps.length) {
+        steps[current].classList.add('active');
+        current++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 400);
+  }
+
+  function hideLoading() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // ── Format Numbers ──────────────────────────────────────────────────────
+  function formatFollowers(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return (n / 1000).toFixed(0) + 'K';
+    return n.toString();
+  }
+
+  // ── Render Proposal ─────────────────────────────────────────────────────
+  function renderProposal(proposal) {
+    const card = document.getElementById('proposalCard');
+
+    const tacticsHtml = proposal.tactics.map(t => `<li>${t}</li>`).join('');
+    const platformTags = proposal.platforms.map(p => `<span class="proposal-tag">${p}</span>`).join('');
+    const kpiTags = proposal.kpis.map(k => `<span class="proposal-tag">${k}</span>`).join('');
+
+    const bb = proposal.budgetBreakdown;
+
+    card.innerHTML = `
+      <div class="proposal-title">${proposal.goal}</div>
+      <div class="proposal-desc">${proposal.description}</div>
+      <div class="proposal-grid">
+        <div class="proposal-block">
+          <h4>Strategy Tactics</h4>
+          <ul class="proposal-list">${tacticsHtml}</ul>
+        </div>
+        <div class="proposal-block">
+          <h4>Platforms</h4>
+          <div style="margin-bottom:16px">${platformTags}</div>
+          <h4>KPIs</h4>
+          <div>${kpiTags}</div>
+        </div>
+      </div>
+      <div class="budget-grid">
+        <div class="budget-item">
+          <div class="budget-item-label">Creator Fees</div>
+          <div class="budget-item-value">AED ${bb.creatorFees.amount.toLocaleString()}</div>
+          <div class="budget-item-pct">${bb.creatorFees.pct}</div>
+        </div>
+        <div class="budget-item">
+          <div class="budget-item-label">Ad Spend</div>
+          <div class="budget-item-value">AED ${bb.adSpend.amount.toLocaleString()}</div>
+          <div class="budget-item-pct">${bb.adSpend.pct}</div>
+        </div>
+        <div class="budget-item">
+          <div class="budget-item-label">Production</div>
+          <div class="budget-item-value">AED ${bb.production.amount.toLocaleString()}</div>
+          <div class="budget-item-pct">${bb.production.pct}</div>
+        </div>
+        <div class="budget-item">
+          <div class="budget-item-label">Management</div>
+          <div class="budget-item-value">AED ${bb.management.amount.toLocaleString()}</div>
+          <div class="budget-item-pct">${bb.management.pct}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ── Render Creators ─────────────────────────────────────────────────────
+  function renderCreators(creators) {
+    const grid = document.getElementById('creatorsGrid');
+    grid.innerHTML = creators.map(c => `
+      <div class="creator-card">
+        <div class="creator-header">
+          <div class="creator-avatar">${c.avatar}</div>
+          <div>
+            <div class="creator-name">${c.name}</div>
+            <div class="creator-niche">${c.niche} · ${c.location}</div>
+          </div>
+        </div>
+        <div class="creator-stats">
+          <div class="creator-stat">
+            <div class="creator-stat-label">Followers</div>
+            <div class="creator-stat-value">${formatFollowers(c.followers)}</div>
+          </div>
+          <div class="creator-stat">
+            <div class="creator-stat-label">Engagement</div>
+            <div class="creator-stat-value green">${c.engagement}</div>
+          </div>
+          <div class="creator-stat">
+            <div class="creator-stat-label">Platform</div>
+            <div class="creator-stat-value">${c.platform}</div>
+          </div>
+          <div class="creator-stat">
+            <div class="creator-stat-label">Rate</div>
+            <div class="creator-stat-value">AED ${c.rate.toLocaleString()}</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── Render Outreach ─────────────────────────────────────────────────────
+  function renderOutreach(outreach) {
+    const container = document.getElementById('outreachContainer');
+    container.innerHTML = outreach.map((o, idx) => `
+      <div class="outreach-card">
+        <div class="outreach-creator">
+          ${o.creator}
+          <span class="outreach-creator-badge">Auto-Generated</span>
+        </div>
+        <div class="outreach-tabs">
+          <button class="outreach-tab active" onclick="switchOutreach(this, 'dm-${idx}', 'email-${idx}')">DM</button>
+          <button class="outreach-tab" onclick="switchOutreach(this, 'email-${idx}', 'dm-${idx}')">Email</button>
+        </div>
+        <div class="outreach-content" id="dm-${idx}">
+          ${o.dm}
+        </div>
+        <div class="outreach-content" id="email-${idx}" style="display:none">
+          <div class="outreach-email-subject"><span>Subject:</span> ${o.email.subject}</div>
+          ${o.email.body.replace(/\n/g, '<br>')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── Outreach Tab Switcher (global) ──────────────────────────────────────
+  window.switchOutreach = function(btn, showId, hideId) {
+    btn.parentElement.querySelectorAll('.outreach-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(showId).style.display = 'block';
+    document.getElementById(hideId).style.display = 'none';
+  };
+
+  // ── Render Timeline ─────────────────────────────────────────────────────
+  function renderTimeline(plan) {
+    const tl = document.getElementById('timeline');
+    tl.innerHTML = plan.map(p => `
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-day">${p.day}</div>
+          <div class="timeline-phase">${p.phase}</div>
+          <div class="timeline-status ${p.status}">${p.status}</div>
+        </div>
+        <div class="timeline-tasks">
+          ${p.tasks.map(t => `<div class="timeline-task">${t}</div>`).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── Render Report ───────────────────────────────────────────────────────
+  function renderReport(report) {
+    const grid = document.getElementById('reportGrid');
+    grid.innerHTML = `
+      <div class="report-metric">
+        <div class="report-metric-label">Est. Reach</div>
+        <div class="report-metric-value purple">${report.estimatedReach}</div>
+      </div>
+      <div class="report-metric">
+        <div class="report-metric-label">Est. Impressions</div>
+        <div class="report-metric-value green">${report.estimatedImpressions}</div>
+      </div>
+      <div class="report-metric">
+        <div class="report-metric-label">Est. Engagements</div>
+        <div class="report-metric-value amber">${report.estimatedEngagements}</div>
+      </div>
+      <div class="report-metric">
+        <div class="report-metric-label">Est. Conversions</div>
+        <div class="report-metric-value rose">${report.estimatedConversions}</div>
+      </div>
+      <div class="report-metric">
+        <div class="report-metric-label">Avg Engagement</div>
+        <div class="report-metric-value purple">${report.avgEngagementRate}</div>
+      </div>
+      <div class="report-metric">
+        <div class="report-metric-label">Projected ROI</div>
+        <div class="report-metric-value green">${report.projectedROI}</div>
+      </div>
+      <div class="report-metric">
+        <div class="report-metric-label">Cost / Engagement</div>
+        <div class="report-metric-value amber">AED ${report.costPerEngagement}</div>
+      </div>
+      <div class="report-metric">
+        <div class="report-metric-label">Cost / Conversion</div>
+        <div class="report-metric-value rose">AED ${report.costPerConversion}</div>
+      </div>
+    `;
+  }
+
+  // ── Staggered Section Reveal ────────────────────────────────────────────
+  function revealDashboard() {
+    const sections = dashboard.querySelectorAll('.dash-section');
+    sections.forEach((s, i) => {
+      setTimeout(() => { s.classList.add('visible'); }, i * 200);
+    });
+  }
+
+  // ── Form Submission ─────────────────────────────────────────────────────
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const brand    = document.getElementById('brandName').value.trim();
+    const goal     = document.getElementById('campaignGoal').value;
+    const budget   = document.getElementById('budget').value;
+    const audience = document.getElementById('audience').value.trim();
+
+    if (!brand || !goal || !budget || !audience) return;
+
+    runBtn.disabled = true;
+    showLoading();
+    const startTime = performance.now();
+
+    try {
+      const res = await fetch('/api/run-campaign', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ brand, goal, budget, audience })
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'API error');
+
+      // Wait for loading animation to complete
+      await new Promise(r => setTimeout(r, 2800));
+
+      const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
+
+      // Populate dashboard
+      document.getElementById('dashBrand').textContent = brand;
+      document.getElementById('dashTime').textContent = elapsed + 's';
+      document.getElementById('dashGoal').textContent = data.proposal.goal;
+
+      renderProposal(data.proposal);
+      renderCreators(data.creators);
+      renderOutreach(data.outreach);
+      renderTimeline(data.campaignPlan);
+      renderReport(data.report);
+
+      hideLoading();
+      dashboard.style.display = 'block';
+
+      // Scroll to dashboard
+      setTimeout(() => {
+        dashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        revealDashboard();
+      }, 100);
+
+    } catch (err) {
+      hideLoading();
+      alert('Error: ' + err.message);
+    } finally {
+      runBtn.disabled = false;
+    }
+  });
+
+  // ── Scroll-triggered SOP Workflow Animation ─────────────────────────────
+  const workflowObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const steps = entry.target.querySelectorAll('.workflow-step');
+        const arrows = entry.target.querySelectorAll('.workflow-arrow');
+
+        steps.forEach((step, i) => {
+          setTimeout(() => { step.classList.add('visible'); }, i * 150);
+        });
+
+        arrows.forEach((arrow, i) => {
+          setTimeout(() => { arrow.classList.add('visible'); }, i * 150 + 75);
+        });
+
+        workflowObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  const pipeline = document.getElementById('workflowPipeline');
+  if (pipeline) workflowObserver.observe(pipeline);
+
+  // ── Interactive SOP Steps ───────────────────────────────────────────────
+  const workflowProgressBar = document.getElementById('workflowProgressBar');
+  const workflowProgressText = document.getElementById('workflowProgressText');
+  const workflowDetailCard = document.getElementById('workflowDetailCard');
+  const workflowSteps = pipeline ? Array.from(pipeline.querySelectorAll('.workflow-step')) : [];
+
+  const workflowContent = {
+    input: {
+      title: 'Client Input',
+      copy: 'Capture brand context, objective, and budget constraints. This data seeds every downstream decision and eliminates back-and-forth briefing loops.',
+      points: [
+        'Validates required campaign fields',
+        'Normalizes input for AI processing',
+        'Creates a reusable campaign context object'
+      ]
+    },
+    proposal: {
+      title: 'AI Proposal',
+      copy: 'Generate a campaign strategy with channels, creative angles, and KPI logic tuned to the brief in seconds.',
+      points: [
+        'Builds objective-aligned strategic narrative',
+        'Produces channel and content recommendations',
+        'Outputs measurable KPI framework'
+      ]
+    },
+    match: {
+      title: 'Creator Match',
+      copy: 'Rank creators using niche relevance, engagement quality, and expected fit against campaign goals.',
+      points: [
+        'Filters creators by goal-driven criteria',
+        'Prioritizes higher engagement profiles',
+        'Returns shortlist with rate and audience context'
+      ]
+    },
+    outreach: {
+      title: 'Outreach',
+      copy: 'Create personalized DM and email outreach instantly so teams can move from planning to activation without delay.',
+      points: [
+        'Drafts personalized creator messages',
+        'Generates subject lines and campaign context',
+        'Maintains consistent brand tone'
+      ]
+    },
+    execute: {
+      title: 'Execution',
+      copy: 'Coordinate campaign launch tasks, scheduling, and operations checkpoints for smooth on-time activation.',
+      points: [
+        'Maps campaign timeline and owners',
+        'Highlights critical launch checkpoints',
+        'Supports rapid adjustments during go-live'
+      ]
+    },
+    report: {
+      title: 'Report',
+      copy: 'Summarize performance with decision-ready outputs for leadership, including conversion and ROI projections.',
+      points: [
+        'Projects reach, engagement, and conversion',
+        'Calculates cost efficiency metrics',
+        'Delivers CEO-friendly reporting narrative'
+      ]
+    }
+  };
+
+  function setActiveWorkflowStep(index) {
+    if (!workflowSteps.length || !workflowDetailCard || !workflowProgressBar || !workflowProgressText) return;
+
+    workflowSteps.forEach((step, stepIndex) => {
+      step.classList.toggle('active', stepIndex === index);
+    });
+
+    const activeStep = workflowSteps[index];
+    const stepKey = activeStep.getAttribute('data-step-key');
+    const content = workflowContent[stepKey];
+    const progress = ((index + 1) / workflowSteps.length) * 100;
+
+    workflowProgressBar.style.width = `${progress}%`;
+    workflowProgressText.textContent = `Step ${index + 1} of ${workflowSteps.length} - ${content.title}`;
+
+    workflowDetailCard.innerHTML = `
+      <div class="workflow-detail-kicker">Current Automation</div>
+      <h3 class="workflow-detail-title">${content.title}</h3>
+      <p class="workflow-detail-copy">${content.copy}</p>
+      <ul class="workflow-detail-list">
+        ${content.points.map((point) => `<li>${point}</li>`).join('')}
+      </ul>
+    `;
+  }
+
+  let currentWorkflowStep = -1;
+  const sopSection = document.getElementById('sop-section');
+  const sopScrollArea = document.getElementById('sopScrollArea');
+  let workflowSectionInView = false;
+  let lastManualStepChangeAt = 0;
+
+  const sopZoneObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.target.id === 'sop-section') {
+        workflowSectionInView = entry.isIntersecting;
+      }
+    });
+  }, { threshold: 0.2 });
+
+  if (sopSection) sopZoneObserver.observe(sopSection);
+
+  function updateWorkflowByScroll() {
+    if (!sopSection || !workflowSteps.length || !workflowSectionInView) return;
+    if (Date.now() - lastManualStepChangeAt < 1200) return;
+
+    const sourceRect = sopScrollArea ? sopScrollArea.getBoundingClientRect() : sopSection.getBoundingClientRect();
+    const rect = sourceRect;
+    const viewportCenter = window.innerHeight * 0.52;
+    if (rect.top > viewportCenter || rect.bottom < viewportCenter) return;
+
+    const travelDistance = rect.height + window.innerHeight * 0.2;
+    const progress = (window.innerHeight * 0.62 - rect.top) / Math.max(travelDistance, 1);
+    const clamped = Math.max(0, Math.min(0.999, progress));
+    const nextStep = Math.floor(clamped * workflowSteps.length);
+
+    if (nextStep !== currentWorkflowStep) {
+      currentWorkflowStep = nextStep;
+      setActiveWorkflowStep(nextStep);
+    }
+  }
+
+  if (workflowSteps.length) {
+    workflowSteps.forEach((step, stepIndex) => {
+      step.addEventListener('click', () => {
+        lastManualStepChangeAt = Date.now();
+        currentWorkflowStep = stepIndex;
+        setActiveWorkflowStep(stepIndex);
+      });
+
+      step.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          lastManualStepChangeAt = Date.now();
+          currentWorkflowStep = stepIndex;
+          setActiveWorkflowStep(stepIndex);
+        }
+      });
+    });
+
+    setActiveWorkflowStep(0);
+    window.addEventListener('scroll', updateWorkflowByScroll, { passive: true });
+    window.addEventListener('resize', updateWorkflowByScroll, { passive: true });
+    updateWorkflowByScroll();
+  }
+
+  // ── Global On-scroll Reveal ─────────────────────────────────────────────
+  const revealSelector = [
+    '.section-header',
+    '.input-panel',
+    '.roi-panel',
+    '.showcase-item',
+    '.workflow-pipeline',
+    '.workflow-progress-track',
+    '.workflow-progress-text',
+    '.workflow-detail-card',
+    '.how-card',
+    '.contact-card'
+  ].join(',');
+
+  const revealTargets = document.querySelectorAll(revealSelector);
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.16, rootMargin: '0px 0px -30px 0px' });
+
+  revealTargets.forEach((node, i) => {
+    node.classList.add('reveal-ready');
+    node.style.transitionDelay = `${Math.min(i * 35, 280)}ms`;
+    revealObserver.observe(node);
+  });
+
+  // ── Smooth nav scroll ───────────────────────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ── Mobile/Tablet Nav Toggle ───────────────────────────────────────────
+  const navMenuBtn = document.querySelector('.nav-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  function closeNavMenu() {
+    if (!navLinks || !navMenuBtn) return;
+    navLinks.classList.remove('is-open');
+    navMenuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  if (navMenuBtn && navLinks) {
+    navMenuBtn.addEventListener('click', () => {
+      const nextState = !navLinks.classList.contains('is-open');
+      navLinks.classList.toggle('is-open', nextState);
+      navMenuBtn.setAttribute('aria-expanded', String(nextState));
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => closeNavMenu());
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) closeNavMenu();
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
