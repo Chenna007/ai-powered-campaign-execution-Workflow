@@ -68,21 +68,75 @@
 
       <div class="hero-visual" data-load-in>
         <div class="hero-media-wrap">
-          <div class="hero-globe-shell" aria-label="Interactive rotating globe">
-            <canvas id="heroGlobeCanvas" class="hero-globe-canvas"></canvas>
-            <svg class="hero-globe-overlay" viewBox="0 0 100 100" aria-hidden="true">
-              <path class="hero-globe-arc" d="M18,29 C35,10 58,11 74,25" />
-              <path class="hero-globe-arc" d="M32,31 C46,20 63,19 79,30" />
+          <!-- CPU Architecture Circuit -->
+          <div class="hero-cpu-wrap">
+            <svg class="hero-cpu-svg" width="100%" height="100%" viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+              <!-- Circuit Paths -->
+              <g stroke="rgba(30,40,80,0.35)" fill="none" stroke-width="0.3" stroke-dasharray="100 100" pathLength="100" marker-start="url(#cpu-circle-marker)">
+                <path stroke-dasharray="100 100" pathLength="100" d="M 10 20 h 79.5 q 5 0 5 5 v 30" />
+                <path stroke-dasharray="100 100" pathLength="100" d="M 180 10 h -69.7 q -5 0 -5 5 v 30" />
+                <path d="M 130 20 v 21.8 q 0 5 -5 5 h -10" />
+                <path d="M 170 80 v -21.8 q 0 -5 -5 -5 h -50" />
+                <path stroke-dasharray="100 100" pathLength="100" d="M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -20" />
+                <path d="M 94.8 95 v -36" />
+                <path d="M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 14" />
+                <path d="M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 20" />
+                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="1s" fill="freeze" calcMode="spline" keySplines="0.25,0.1,0.5,1" keyTimes="0; 1" />
+              </g>
+              <!-- Traveling Lights -->
+              <g mask="url(#cpu-mask-1)"><circle class="cpu-light cpu-line-1" cx="0" cy="0" r="8" fill="url(#cpu-blue-grad)" /></g>
+              <g mask="url(#cpu-mask-2)"><circle class="cpu-light cpu-line-2" cx="0" cy="0" r="8" fill="url(#cpu-yellow-grad)" /></g>
+              <g mask="url(#cpu-mask-3)"><circle class="cpu-light cpu-line-3" cx="0" cy="0" r="8" fill="url(#cpu-pinkish-grad)" /></g>
+              <g mask="url(#cpu-mask-4)"><circle class="cpu-light cpu-line-4" cx="0" cy="0" r="8" fill="url(#cpu-white-grad)" /></g>
+              <g mask="url(#cpu-mask-5)"><circle class="cpu-light cpu-line-5" cx="0" cy="0" r="8" fill="url(#cpu-green-grad)" /></g>
+              <g mask="url(#cpu-mask-6)"><circle class="cpu-light cpu-line-6" cx="0" cy="0" r="8" fill="url(#cpu-orange-grad)" /></g>
+              <g mask="url(#cpu-mask-7)"><circle class="cpu-light cpu-line-7" cx="0" cy="0" r="8" fill="url(#cpu-cyan-grad)" /></g>
+              <g mask="url(#cpu-mask-8)"><circle class="cpu-light cpu-line-8" cx="0" cy="0" r="8" fill="url(#cpu-rose-grad)" /></g>
+              <!-- CPU Chip -->
+              <g>
+                <g fill="url(#cpu-connection-gradient)">
+                  <rect x="93" y="37" width="2.5" height="5" rx="0.7" />
+                  <rect x="104" y="37" width="2.5" height="5" rx="0.7" />
+                  <rect x="116.3" y="44" width="2.5" height="5" rx="0.7" transform="rotate(90 116.25 45.5)" />
+                  <rect x="122.8" y="44" width="2.5" height="5" rx="0.7" transform="rotate(90 116.25 45.5)" />
+                  <rect x="104" y="16" width="2.5" height="5" rx="0.7" transform="rotate(180 105.25 39.5)" />
+                  <rect x="114.5" y="16" width="2.5" height="5" rx="0.7" transform="rotate(180 105.25 39.5)" />
+                  <rect x="80" y="-13.6" width="2.5" height="5" rx="0.7" transform="rotate(270 115.25 19.5)" />
+                  <rect x="87" y="-13.6" width="2.5" height="5" rx="0.7" transform="rotate(270 115.25 19.5)" />
+                </g>
+                <rect x="85" y="40" width="30" height="20" rx="2" fill="#181818" filter="url(#cpu-light-shadow)" />
+                <text x="92" y="52.5" font-size="7" fill="url(#cpu-text-gradient)" font-weight="600" letter-spacing="0.05em">AI</text>
+              </g>
+              <!-- Defs -->
+              <defs>
+                <mask id="cpu-mask-1"><path d="M 10 20 h 79.5 q 5 0 5 5 v 24" stroke-width="0.5" stroke="white" fill="none" /></mask>
+                <mask id="cpu-mask-2"><path d="M 180 10 h -69.7 q -5 0 -5 5 v 24" stroke-width="0.5" stroke="white" fill="none" /></mask>
+                <mask id="cpu-mask-3"><path d="M 130 20 v 21.8 q 0 5 -5 5 h -10" stroke-width="0.5" stroke="white" fill="none" /></mask>
+                <mask id="cpu-mask-4"><path d="M 170 80 v -21.8 q 0 -5 -5 -5 h -50" stroke-width="0.5" stroke="white" fill="none" /></mask>
+                <mask id="cpu-mask-5"><path d="M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -20" stroke-width="0.5" stroke="white" fill="none" /></mask>
+                <mask id="cpu-mask-6"><path d="M 94.8 95 v -36" stroke-width="0.5" stroke="white" fill="none" /></mask>
+                <mask id="cpu-mask-7"><path d="M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 14" stroke-width="0.5" stroke="white" fill="none" /></mask>
+                <mask id="cpu-mask-8"><path d="M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 20" stroke-width="0.5" stroke="white" fill="none" /></mask>
+                <radialGradient id="cpu-blue-grad" fx="1"><stop offset="0%" stop-color="#00E8ED" /><stop offset="50%" stop-color="#08F" /><stop offset="100%" stop-color="transparent" /></radialGradient>
+                <radialGradient id="cpu-yellow-grad" fx="1"><stop offset="0%" stop-color="#FFD800" /><stop offset="50%" stop-color="#FFD800" /><stop offset="100%" stop-color="transparent" /></radialGradient>
+                <radialGradient id="cpu-pinkish-grad" fx="1"><stop offset="0%" stop-color="#830CD1" /><stop offset="50%" stop-color="#FF008B" /><stop offset="100%" stop-color="transparent" /></radialGradient>
+                <radialGradient id="cpu-white-grad" fx="1"><stop offset="0%" stop-color="white" /><stop offset="100%" stop-color="transparent" /></radialGradient>
+                <radialGradient id="cpu-green-grad" fx="1"><stop offset="0%" stop-color="#22c55e" /><stop offset="100%" stop-color="transparent" /></radialGradient>
+                <radialGradient id="cpu-orange-grad" fx="1"><stop offset="0%" stop-color="#f97316" /><stop offset="100%" stop-color="transparent" /></radialGradient>
+                <radialGradient id="cpu-cyan-grad" fx="1"><stop offset="0%" stop-color="#06b6d4" /><stop offset="100%" stop-color="transparent" /></radialGradient>
+                <radialGradient id="cpu-rose-grad" fx="1"><stop offset="0%" stop-color="#f43f5e" /><stop offset="100%" stop-color="transparent" /></radialGradient>
+                <filter id="cpu-light-shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="1.5" dy="1.5" stdDeviation="1" flood-color="black" flood-opacity="0.1" /></filter>
+                <marker id="cpu-circle-marker" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="18" markerHeight="18">
+                  <circle cx="5" cy="5" r="2" fill="#1a1a2e" stroke="#232323" stroke-width="0.5"><animate attributeName="r" values="0; 3; 2" dur="0.5s" /></circle>
+                </marker>
+                <linearGradient id="cpu-connection-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4F4F4F" /><stop offset="60%" stop-color="#121214" /></linearGradient>
+                <linearGradient id="cpu-text-gradient" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#666666"><animate attributeName="offset" values="-2; -1; 0" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" /></stop>
+                  <stop offset="25%" stop-color="white"><animate attributeName="offset" values="-1; 0; 1" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" /></stop>
+                  <stop offset="50%" stop-color="#666666"><animate attributeName="offset" values="0; 1; 2" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" /></stop>
+                </linearGradient>
+              </defs>
             </svg>
-            <span class="hero-globe-tag hero-globe-tag--sf">SAN FRANCISCO</span>
-            <span class="hero-globe-tag hero-globe-tag--ny">NEW YORK</span>
-            <span class="hero-globe-tag hero-globe-tag--par">PARIS</span>
-            <span class="hero-globe-tag hero-globe-tag--dub">DUBAI</span>
-            <span class="hero-globe-tag hero-globe-tag--sao">SAO PAULO</span>
-            <span class="hero-globe-tag hero-globe-tag--cap">CAPE TOWN</span>
-            <span class="hero-globe-tag hero-globe-tag--route-a hero-globe-tag--light">SF -> TOKYO</span>
-            <span class="hero-globe-tag hero-globe-tag--route-b hero-globe-tag--light">NYC -> LONDON</span>
-            <span class="hero-globe-hint">Drag to rotate</span>
           </div>
         </div>
       </div>
@@ -535,7 +589,7 @@
   <div class="container">
     <div class="contact-card open-work-card">
       <div class="section-label">✅ Open To Work</div>
-      <h2 class="contact-title">I am open to work, please reach out</h2>
+      <h2 class="contact-title">I am open to work, please reach out - Chenna Keshava</h2>
       <p class="contact-subtitle">Available for AI & Automation Lead, Workflow Automation, and Applied AI Operations roles.</p>
 
       <div class="open-work-grid">
@@ -1154,138 +1208,6 @@
 })();
 </script>
 
-<script type="module">
-import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
-
-(function initHeroGlobe() {
-  const canvas = document.getElementById("heroGlobeCanvas");
-  if (!canvas) return;
-
-  let globe = null;
-  let phi = 0;
-  let size = 0;
-  let drag = null;
-  let isHovering = false;
-  let dragOffset = { phi: 0, theta: 0 };
-  let momentum = { phi: 0, theta: 0 };
-  let thetaOffset = 0;
-
-  const markers = [
-    { location: [25.2048, 55.2708], size: 0.085 },
-    { location: [40.7128, -74.006], size: 0.06 },
-    { location: [51.5074, -0.1278], size: 0.06 },
-    { location: [35.6762, 139.6503], size: 0.07 },
-    { location: [37.7595, -122.4367], size: 0.06 },
-    { location: [-33.9249, 18.4241], size: 0.055 },
-    { location: [-23.5505, -46.6333], size: 0.055 },
-  ];
-
-  const arcs = [
-    { from: [37.7595, -122.4367], to: [35.6762, 139.6503] },
-    { from: [40.7128, -74.006], to: [51.5074, -0.1278] },
-  ];
-
-  function buildGlobe() {
-    const nextSize = Math.round(canvas.offsetWidth);
-    if (!nextSize || nextSize === size) return;
-    size = nextSize;
-
-    const renderSize = nextSize * 2;
-
-    if (globe) globe.destroy();
-
-    globe = createGlobe(canvas, {
-      devicePixelRatio: 1,
-      width: renderSize,
-      height: renderSize,
-      scale: 1,
-      offset: [0, 0],
-      phi: 0,
-      theta: 0.18,
-      dark: 0,
-      diffuse: 2.2,
-      mapSamples: 20000,
-      mapBrightness: 4,
-      baseColor: [1, 1, 1],
-      markerColor: [0.31, 0.47, 0.9],
-      glowColor: [0.98, 0.98, 0.98],
-      markerSize: 0.055,
-      markerElevation: 0.018,
-      markers,
-      arcColor: [0.31, 0.47, 0.9],
-      arcWidth: 1,
-      arcHeight: 0.2,
-      arcs,
-      opacity: 1,
-      onRender: (state) => {
-        const autoSpeed = isHovering ? 0.0016 : 0.0028;
-        phi += autoSpeed;
-
-        if (Math.abs(momentum.phi) > 0.0001 || Math.abs(momentum.theta) > 0.0001) {
-          dragOffset.phi += momentum.phi * 0.035;
-          thetaOffset += momentum.theta;
-          momentum.phi *= 0.92;
-          momentum.theta *= 0.9;
-        }
-
-        const thetaMin = -0.35;
-        const thetaMax = 0.35;
-        thetaOffset = Math.max(thetaMin, Math.min(thetaMax, thetaOffset));
-
-        state.phi = phi + dragOffset.phi;
-        state.theta = 0.18 + thetaOffset + dragOffset.theta;
-        state.width = renderSize;
-        state.height = renderSize;
-      },
-    });
-
-    canvas.style.opacity = "1";
-  }
-
-  const onPointerDown = (event) => {
-    drag = { x: event.clientX, y: event.clientY, t: Date.now() };
-    canvas.style.cursor = "grabbing";
-  };
-
-  const onPointerEnter = () => {
-    isHovering = true;
-  };
-
-  const onPointerLeave = () => {
-    isHovering = false;
-  };
-
-  const onPointerMove = (event) => {
-    if (!drag) return;
-    const deltaX = event.clientX - drag.x;
-    const deltaY = event.clientY - drag.y;
-
-    drag.x = event.clientX;
-    drag.y = event.clientY;
-
-    dragOffset.phi += deltaX / 430;
-    dragOffset.theta += deltaY / 2200;
-
-    momentum.phi = deltaX;
-    momentum.theta = deltaY / 70;
-  };
-
-  const onPointerUp = () => {
-    dragOffset.theta = Math.max(-0.12, Math.min(0.12, dragOffset.theta));
-    drag = null;
-    canvas.style.cursor = "grab";
-  };
-
-  canvas.addEventListener("pointerdown", onPointerDown);
-  canvas.addEventListener("pointerenter", onPointerEnter);
-  canvas.addEventListener("pointerleave", onPointerLeave);
-  window.addEventListener("pointermove", onPointerMove, { passive: true });
-  window.addEventListener("pointerup", onPointerUp, { passive: true });
-  window.addEventListener("resize", buildGlobe);
-
-  buildGlobe();
-})();
-</script>
 
 </body>
 </html>
