@@ -374,7 +374,7 @@ body.cursor-on .cursor-ring {
 .hero-globe-shell {
   position: relative;
   width: 100%;
-  max-width: 610px;
+  max-width: 560px;
   margin: 0 auto;
   aspect-ratio: 1 / 1;
   display: grid;
@@ -390,7 +390,9 @@ body.cursor-on .cursor-ring {
   cursor: grab;
   background: transparent;
   box-shadow: none;
-  transition: transform 0.28s ease;
+  opacity: 0;
+  transition: transform 0.28s ease, opacity 0.45s ease;
+  touch-action: none;
 }
 
 .hero-globe-shell:hover .hero-globe-canvas {
@@ -404,6 +406,7 @@ body.cursor-on .cursor-ring {
   height: 100%;
   pointer-events: none;
   z-index: 1;
+  opacity: 0.92;
 }
 
 .hero-globe-arc {
@@ -461,6 +464,15 @@ body.cursor-on .cursor-ring {
 .hero-globe-tag--cap { animation-delay: 0.45s; }
 .hero-globe-tag--route-a,
 .hero-globe-tag--route-b { animation-delay: 0.7s; }
+
+.hero-globe-tag--sf,
+.hero-globe-tag--ny,
+.hero-globe-tag--par,
+.hero-globe-tag--dub,
+.hero-globe-tag--sao,
+.hero-globe-tag--cap {
+  font-weight: 700;
+}
 
 .hero-globe-hint {
   position: absolute;
@@ -2219,7 +2231,7 @@ body.cursor-on .cursor-ring {
   .showcase-item p { font-size: 15px; }
   .showcase-copy { gap: 18px; padding: 0; }
   .hero-dash-metrics { grid-template-columns: 1fr; }
-  .hero-globe-shell { max-width: 460px; }
+  .hero-globe-shell { max-width: 430px; }
   .hero-globe-tag { font-size: 9px; padding: 3px 7px; }
   .hero-globe-tag--sf { left: 5%; top: 30%; }
   .hero-globe-tag--ny { left: 27%; top: 31%; }

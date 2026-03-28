@@ -1163,7 +1163,7 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
 
   let globe = null;
   let phi = 0;
-  let width = 0;
+  let size = 0;
   let drag = null;
   let isHovering = false;
   let dragOffset = { phi: 0, theta: 0 };
@@ -1186,18 +1186,22 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
   ];
 
   function buildGlobe() {
-    const nextWidth = canvas.offsetWidth;
-    if (!nextWidth || nextWidth === width) return;
-    width = nextWidth;
+    const nextSize = Math.round(canvas.offsetWidth);
+    if (!nextSize || nextSize === size) return;
+    size = nextSize;
+
+    const renderSize = nextSize * 2;
 
     if (globe) globe.destroy();
 
     globe = createGlobe(canvas, {
-      devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
-      width,
-      height: width,
+      devicePixelRatio: 1,
+      width: renderSize,
+      height: renderSize,
+      scale: 1,
+      offset: [0, 0],
       phi: 0,
-      theta: 0.2,
+      theta: 0.18,
       dark: 0,
       diffuse: 2.2,
       mapSamples: 20000,
@@ -1214,13 +1218,14 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
       arcs,
       opacity: 1,
       onRender: (state) => {
-        phi += isHovering ? 0.0015 : 0.0035;
+        const autoSpeed = isHovering ? 0.0016 : 0.0028;
+        phi += autoSpeed;
 
         if (Math.abs(momentum.phi) > 0.0001 || Math.abs(momentum.theta) > 0.0001) {
-          dragOffset.phi += momentum.phi;
+          dragOffset.phi += momentum.phi * 0.035;
           thetaOffset += momentum.theta;
-          momentum.phi *= 0.95;
-          momentum.theta *= 0.95;
+          momentum.phi *= 0.92;
+          momentum.theta *= 0.9;
         }
 
         const thetaMin = -0.35;
@@ -1228,9 +1233,13 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
         thetaOffset = Math.max(thetaMin, Math.min(thetaMax, thetaOffset));
 
         state.phi = phi + dragOffset.phi;
-        state.theta = 0.2 + thetaOffset + dragOffset.theta;
+        state.theta = 0.18 + thetaOffset + dragOffset.theta;
+        state.width = renderSize;
+        state.height = renderSize;
       },
     });
+
+    canvas.style.opacity = "1";
   }
 
   const onPointerDown = (event) => {
@@ -1250,19 +1259,19 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
     if (!drag) return;
     const deltaX = event.clientX - drag.x;
     const deltaY = event.clientY - drag.y;
-    dragOffset = { phi: deltaX / 280, theta: deltaY / 1100 };
 
-    const now = Date.now();
-    const dt = Math.max(now - drag.t, 1);
-    momentum.phi = ((event.clientX - drag.x) / dt) * 0.22;
-    momentum.theta = ((event.clientY - drag.y) / dt) * 0.07;
+    drag.x = event.clientX;
+    drag.y = event.clientY;
+
+    dragOffset.phi += deltaX / 430;
+    dragOffset.theta += deltaY / 2200;
+
+    momentum.phi = deltaX;
+    momentum.theta = deltaY / 70;
   };
 
   const onPointerUp = () => {
-    if (drag) {
-      thetaOffset += dragOffset.theta;
-      dragOffset = { phi: dragOffset.phi, theta: 0 };
-    }
+    dragOffset.theta = Math.max(-0.12, Math.min(0.12, dragOffset.theta));
     drag = null;
     canvas.style.cursor = "grab";
   };
