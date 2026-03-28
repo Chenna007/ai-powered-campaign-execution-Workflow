@@ -379,6 +379,7 @@ body.cursor-on .cursor-ring {
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
+  isolation: isolate;
 }
 
 .hero-globe-canvas {
@@ -389,6 +390,33 @@ body.cursor-on .cursor-ring {
   cursor: grab;
   background: transparent;
   box-shadow: none;
+  transition: transform 0.28s ease;
+}
+
+.hero-globe-shell:hover .hero-globe-canvas {
+  transform: scale(1.012);
+}
+
+.hero-globe-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-globe-arc {
+  fill: none;
+  stroke: rgba(79, 122, 230, 0.9);
+  stroke-width: 0.44;
+  stroke-linecap: round;
+  stroke-dasharray: 1.3 1;
+  animation: globeArcFlow 3.8s linear infinite;
+}
+
+.hero-globe-arc:nth-of-type(2) {
+  animation-delay: -1.4s;
 }
 
 .hero-globe-tag {
@@ -406,6 +434,8 @@ body.cursor-on .cursor-ring {
   white-space: nowrap;
   pointer-events: none;
   z-index: 2;
+  animation: globeTagFloat 4.8s ease-in-out infinite;
+  box-shadow: 0 8px 16px rgba(16, 23, 58, 0.16);
 }
 
 .hero-globe-tag--light {
@@ -423,13 +453,50 @@ body.cursor-on .cursor-ring {
 .hero-globe-tag--route-a { left: 16%; top: 14%; }
 .hero-globe-tag--route-b { left: 42%; top: 18%; }
 
+.hero-globe-tag--sf { animation-delay: 0.1s; }
+.hero-globe-tag--ny { animation-delay: 0.35s; }
+.hero-globe-tag--par { animation-delay: 0.55s; }
+.hero-globe-tag--dub { animation-delay: 0.8s; }
+.hero-globe-tag--sao { animation-delay: 0.2s; }
+.hero-globe-tag--cap { animation-delay: 0.45s; }
+.hero-globe-tag--route-a,
+.hero-globe-tag--route-b { animation-delay: 0.7s; }
+
+.hero-globe-hint {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(45, 63, 105, 0.72);
+  font-weight: 700;
+  z-index: 2;
+}
+
 .hero-visual {
   display: flex;
   justify-content: center;
 }
 
+@keyframes globeArcFlow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -12; }
+}
+
+@keyframes globeTagFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-globe-canvas {
+    animation: none !important;
+  }
+
+  .hero-globe-tag,
+  .hero-globe-arc {
     animation: none !important;
   }
 }
@@ -2162,6 +2229,7 @@ body.cursor-on .cursor-ring {
   .hero-globe-tag--cap { right: 10%; bottom: 20%; }
   .hero-globe-tag--route-a,
   .hero-globe-tag--route-b { display: none; }
+  .hero-globe-hint { bottom: -20px; font-size: 10px; letter-spacing: 0.06em; }
   .form-grid { grid-template-columns: 1fr; }
   .proposal-grid { grid-template-columns: 1fr; }
   .budget-grid { grid-template-columns: repeat(2, 1fr); }

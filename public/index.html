@@ -70,6 +70,10 @@
         <div class="hero-media-wrap">
           <div class="hero-globe-shell" aria-label="Interactive rotating globe">
             <canvas id="heroGlobeCanvas" class="hero-globe-canvas"></canvas>
+            <svg class="hero-globe-overlay" viewBox="0 0 100 100" aria-hidden="true">
+              <path class="hero-globe-arc" d="M18,29 C35,10 58,11 74,25" />
+              <path class="hero-globe-arc" d="M32,31 C46,20 63,19 79,30" />
+            </svg>
             <span class="hero-globe-tag hero-globe-tag--sf">SAN FRANCISCO</span>
             <span class="hero-globe-tag hero-globe-tag--ny">NEW YORK</span>
             <span class="hero-globe-tag hero-globe-tag--par">PARIS</span>
@@ -78,6 +82,7 @@
             <span class="hero-globe-tag hero-globe-tag--cap">CAPE TOWN</span>
             <span class="hero-globe-tag hero-globe-tag--route-a hero-globe-tag--light">SF -> TOKYO</span>
             <span class="hero-globe-tag hero-globe-tag--route-b hero-globe-tag--light">NYC -> LONDON</span>
+            <span class="hero-globe-hint">Drag to rotate</span>
           </div>
         </div>
       </div>
@@ -1160,6 +1165,7 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
   let phi = 0;
   let width = 0;
   let drag = null;
+  let isHovering = false;
   let dragOffset = { phi: 0, theta: 0 };
   let momentum = { phi: 0, theta: 0 };
   let thetaOffset = 0;
@@ -1208,7 +1214,7 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
       arcs,
       opacity: 1,
       onRender: (state) => {
-        phi += 0.0035;
+        phi += isHovering ? 0.0015 : 0.0035;
 
         if (Math.abs(momentum.phi) > 0.0001 || Math.abs(momentum.theta) > 0.0001) {
           dragOffset.phi += momentum.phi;
@@ -1230,6 +1236,14 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
   const onPointerDown = (event) => {
     drag = { x: event.clientX, y: event.clientY, t: Date.now() };
     canvas.style.cursor = "grabbing";
+  };
+
+  const onPointerEnter = () => {
+    isHovering = true;
+  };
+
+  const onPointerLeave = () => {
+    isHovering = false;
   };
 
   const onPointerMove = (event) => {
@@ -1254,6 +1268,8 @@ import createGlobe from "https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm";
   };
 
   canvas.addEventListener("pointerdown", onPointerDown);
+  canvas.addEventListener("pointerenter", onPointerEnter);
+  canvas.addEventListener("pointerleave", onPointerLeave);
   window.addEventListener("pointermove", onPointerMove, { passive: true });
   window.addEventListener("pointerup", onPointerUp, { passive: true });
   window.addEventListener("resize", buildGlobe);
